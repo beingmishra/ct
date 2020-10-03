@@ -68,7 +68,6 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 
 # Perf
-bin/mpdecision:vendor/bin/mpdecision
 vendor/lib/libqc-opt.so
 vendor/lib/libqti-perfd-client.so
 
