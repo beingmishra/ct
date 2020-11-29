@@ -118,6 +118,9 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Legacy memfd
 TARGET_HAS_MEMFD_BACKPORT := true
 
+# Malloc
+MALLOC_SVELTE := true
+
 # Power
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
