@@ -135,6 +135,9 @@ TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/system.prop
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
+# Ringtones
+TARGET_REDUCES_RINGTONES := true
+
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
