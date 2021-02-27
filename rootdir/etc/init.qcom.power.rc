@@ -1,6 +1,9 @@
 on early-init
     write /sys/block/mmcblk0/queue/scheduler noop
-    write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
+    write /sys/block/mmcblk0/bdi/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/nr_requests 256
 
 on enable-low-power
     write /sys/module/lpm_levels/enable_low_power/l2 4
@@ -128,5 +131,7 @@ on property:dev.bootcomplete=1
     write /sys/block/mmcblk0/queue/iosched/sync_read_expire 50
     write /sys/block/mmcblk0/queue/iosched/async_write_expire 250
     write /sys/block/mmcblk0/queue/iosched/async_read_expire 100
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
+    write /sys/block/mmcblk0/queue/nr_requests 128
     setprop vendor.post_boot.parsed 1
     write /sys/kernel/msm_mpdecision/conf/enabled 1
