@@ -41,12 +41,13 @@ TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
 # Kernel
 BOARD_DTBTOOL_ARGS := --force-v2
 BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 BOARD_RAMDISK_USE_XZ := true
-KERNEL_TOOLCHAIN := /run/media/tfonda/LinuxData/android/lineage-18.1/prebuilts/gcc/linux-x86/arm/arm32-gcc/bin
+KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-linaro-7/bin
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 
 # ANT+
@@ -108,6 +109,13 @@ TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_DISABLE_POSTRENDER_CLEANUP := true
 TARGET_USES_ION := true
 
+# Duplicate Rules
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_USES_BUILD_HOST_EXECUTABLE := true
+
 # HWUI
 HWUI_COMPILE_FOR_PERF := true
 
@@ -139,7 +147,7 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_REDUCES_RINGTONES := true
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
